@@ -1,29 +1,27 @@
 "use strict";
 
-// element toggle function
+// Function to toggle element classes
 const elementToggleFunc = function (elem) {
   elem.classList.toggle("active");
 };
 
-// sidebar variables
+// Sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
+// Sidebar toggle functionality for mobile
 sidebarBtn.addEventListener("click", function () {
   elementToggleFunc(sidebar);
 });
 
-// contact form variables
-
+// Contact form variables
 const form = document.querySelector("[data-form]");
 const formInput = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
+// Add event to all form input fields for validation
 for (let i = 0; i < formInput.length; i++) {
   formInput[i].addEventListener("input", function () {
-    //validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -32,12 +30,12 @@ for (let i = 0; i < formInput.length; i++) {
   });
 }
 
-//page navigation valiables
-
+// Page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+const projectItems = document.querySelectorAll("[data-filter-item]");
 
-//add event to all nav link
+// Add event to all navigation links
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
     for (let i = 0; i < pages.length; i++) {
@@ -52,3 +50,22 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
   });
 }
+
+// Filter projects based on category
+const filterButtons = document.querySelectorAll("[data-filter-btn]");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    const category = this.textContent.toLowerCase();
+    
+    projectItems.forEach((item) => {
+      const itemCategory = item.dataset.category.toLowerCase();
+      
+      if (category === "all" || itemCategory === category) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
+});
