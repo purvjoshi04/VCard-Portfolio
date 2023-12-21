@@ -53,8 +53,8 @@
               <div class="contact-info">
                 <p class="contact-title">Email</p>
 
-                <a href="mailto:purvadjoshi@gmail.com" class="contact-link"
-                  >purvadjoshi@gmail.com</a
+                <a href="mailto:purvjoshi.dev@gmail.com" class="contact-link"
+                  >purvjoshi.dev@gmail.com</a
                 >
               </div>
             </li>
@@ -256,15 +256,21 @@
 
             <ol class="timeline-list">
               <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Uka Tarsadia University</h4>
+
+                <span>2021 — 2025 (Pursuing)</span>
+
+                <p class="timeline-text">
+                 I am currently pursuing B.tech in Computer Science and Engineering with CGPA - 7.67.
+                </p>
+              </li>
+              <li class="timeline-item">
                 <h4 class="h4 timeline-item-title">Jagruti Vidhyalaya</h4>
 
                 <span>2017 — 2019</span>
 
                 <p class="timeline-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Explicabo, quibusdam labore beatae odit molestiae laudantium
-                  rem eligendi consectetur modi dolor eius aliquam! Totam
-                  temporibus sapiente sed maxime obcaecati rem vitae.
+                  Completed 10th Board from Gujarat Secondary and Higher Secondary Education Board in 2019.Jagruti Vidhyalaya located in rumla village in navsari district.
                 </p>
               </li>
 
@@ -276,21 +282,18 @@
                 <span>2019 — 2021</span>
 
                 <p class="timeline-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Explicabo, quibusdam labore beatae odit molestiae laudantium
-                  rem eligendi consectetur modi dolor eius aliquam! Totam
-                  temporibus sapiente sed maxime obcaecati rem vitae.
+                  Completed 12th Board from Gujarat Secondary and Higher Secondary Education Board in 2021.Global international school located in rankuva village in navsari district.
                 </p>
               </li>
             </ol>
           </section>
 
           <section class="skill">
-            <h3 class="h3 skills-title">My skills</h3>
+            <h3 class="h3 skills-title">My Skills</h3>
             <ul class="skills-list content-card">
               <li class="skills-item">
                 <div class="title-wrapper">
-                  <h5 class="h5">Web design</h5>
+                  <h5 class="h5">Web Design</h5>
                   <data value="75">75%</data>
                 </div>
                 <div class="skill-progress-bg">
@@ -300,7 +303,7 @@
 
               <li class="skills-item">
                 <div class="title-wrapper">
-                  <h5 class="h5">Web development</h5>
+                  <h5 class="h5">Web Development</h5>
                   <data value="25">25%</data>
                 </div>
                 <div class="skill-progress-bg">
@@ -310,7 +313,7 @@
 
               <li class="skills-item">
                 <div class="title-wrapper">
-                  <h5 class="h5">Android app development</h5>
+                  <h5 class="h5">Android Application Development</h5>
                   <data value="30">30%</data>
                 </div>
                 <div class="skill-progress-bg">
@@ -320,7 +323,16 @@
 
               <li class="skills-item">
                 <div class="title-wrapper">
-                  <h5 class="h5">Ios app development</h5>
+                  <h5 class="h5">Ios Application Development</h5>
+                  <data value="40">40%</data>
+                </div>
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 40%"></div>
+                </div>
+              </li>
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Cross-Plateform Application Development</h5>
                   <data value="40">40%</data>
                 </div>
                 <div class="skill-progress-bg">
@@ -457,7 +469,7 @@
         </article>
 
         <!-- contact -->
-
+       
         <article class="contact" data-page="contact">
           <header>
             <h2 class="h2 article-title">Contact</h2>
@@ -475,11 +487,11 @@
           </section>
           <scetion class="contact-form">
             <h3 class="h3 form-title">Contact Form</h3>
-            <form method="post" class="form" data-form>
+            <form id="contact-form" method="post" class="form" data-form>
               <div class="input-wrapper">
                 <input
                   type="text"
-                  name="fullname"
+                  name="user_name"
                   class="form-input"
                   placeholder="Fullname"
                   required
@@ -487,7 +499,7 @@
                 />
                 <input
                   type="email"
-                  name="email"
+                  name="user_email"
                   class="form-input"
                   placeholder="Email address"
                   required
@@ -502,10 +514,38 @@
                 data-form-input
               ></textarea>
 
-              <button class="form-btn" type="submit" disabled data-form-btn>
+              <button class="form-btn" type="submit" disabled data-form-btn onsubmit={handleFormSubmit}>
                 <ion-icon name="paper-plane-outline"></ion-icon>
                 <span>Send Message</span>
               </button>
+              <script>
+                const handleFormSubmit = (e) => {
+                  e.clear();
+                }
+              </script>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+              <script type="text/javascript">
+                (function() {
+                    
+                    emailjs.init('jLyutf2fzenEwXdx7');
+                })();
+            </script>
+            <script type="text/javascript">
+                window.onload = function() {
+                    document.getElementById('contact-form').addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        
+                        // these IDs from the previous steps
+                        emailjs.sendForm('contact_service', 'contact_form', this)
+                            .then(function() {
+                                console.log('SUCCESS!');
+                            }, function(error) {
+                                console.log('FAILED...', error);
+                            });
+                    });
+                    
+                }
+            </script>
             </form>
           </scetion>
         </article>
