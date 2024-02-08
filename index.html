@@ -519,8 +519,10 @@
                 <span>Send Message</span>
               </button>
               <script>
-                const handleFormSubmit = (e) => {
-                  e.clear();
+                var form = document.getElementById("contact-form");
+                
+                function submitForm(event) {
+                  event.preventDefault();
                 }
               </script>
               <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
